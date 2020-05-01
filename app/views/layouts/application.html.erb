@@ -10,8 +10,14 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <aside>hello world</aside>
-    <%= yield %>
+    <aside id="column-left">
+    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+
+    </aside>
+    <div id="column-middle">
+      <p class="notice"><%= notice %></p>
+      <%= yield %>
+    </div>
+    <aside id="column-right">Sidebar2</aside>
   </body>
 </html>
