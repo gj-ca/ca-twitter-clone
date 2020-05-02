@@ -17,8 +17,10 @@
         <td><%= twite.body %></td>
         <td><%= twite.user_id %></td>
         <td><%= link_to 'Show', twite %></td>
-        <td><%= link_to 'Edit', edit_twite_path(twite) %></td>
-        <td><%= link_to 'Destroy', twite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.id == twite.user_id %>
+          <td><%= link_to 'Edit', edit_twite_path(twite) %></td>
+          <td><%= link_to 'Destroy', twite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
