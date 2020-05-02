@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :get_comment, only: [:show, :destroy]
+  before_action :get_comment, only: [:destroy] #,:show]
 
   def create
     @comment = Comment.new(comment_params)
@@ -11,8 +11,9 @@ class CommentsController < ApplicationController
   end
 
   def show
-    # @comment = Comment.where(twite_id: params[:twite_id]) => [Com1, Com2, Com3] => order by created_at(descending_order) => collection[:comment_id - 1]
-    # @comment = Comment.find(params[:comment_id]) #=> now in get_comment
+    # Fixed this easy
+    @comments = Comment.where(twite_id: params[:twite_id])
+    @comment = @comments[params[:comment_id].to_i - 1]
   end
 
   def update
