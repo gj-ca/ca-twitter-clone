@@ -15,10 +15,16 @@ class TwitesController < ApplicationController
   # GET /twites/new
   def new
     @twite = Twite.new
+    # post /twites/
   end
 
   # GET /twites/1/edit
   def edit
+    # @twite = Twite.find(params[:id])
+    # patch /twites/params[:id]/
+    if @twite.user_id != current_user.id
+      redirect_to root_path, notice: "You can't do that you sneaky hacker boi!"
+    end
   end
 
   # POST /twites
