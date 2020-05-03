@@ -1,5 +1,12 @@
 class TwitesController < ApplicationController
   before_action :set_twite, only: [:show, :edit, :update, :destroy]
+  before_action :check_for_image_or_body, only: [:update, :create]
+
+  def check_for_image_or_body
+    if params[:twite][:body] == "" and params[:twite][:twite_picture] == nil
+      render plain: "gotta have something \n Glen had body == nil when it should of been \n body == \"\" "
+    end
+  end
 
   # GET /twites
   # GET /twites.json
