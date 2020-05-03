@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.twite_id = params[:twite_id]
     @comment.user_id = current_user.id
+    @comment.comment_picture.attach(params[:comment][:comment_picture])
     @comment.save
     redirect_to twite_path(params[:twite_id])
   end
