@@ -32,7 +32,7 @@ class TwitesController < ApplicationController
   def create
     @twite = Twite.new(twite_params)
     @twite.user_id = current_user.id
-    @twite.twite_picture.attach(params[:twite][:twite_picture])
+    @twite.twite_pictures.attach(params[:twite][:twite_pictures])
     
     respond_to do |format|
       if @twite.save
@@ -48,7 +48,7 @@ class TwitesController < ApplicationController
   # PATCH/PUT /twites/1
   # PATCH/PUT /twites/1.json
   def update
-    @twite.twite_picture.attach(params[:twite][:twite_picture])
+    @twite.twite_pictures.attach(params[:twite][:twite_pictures])
     respond_to do |format|
       if @twite.update(twite_params)
         format.html { redirect_to @twite, notice: 'Twite was successfully updated.' }

@@ -3,7 +3,9 @@
   <%= @twite.body %>
 </p>
 
-<%= image_tag @twite.twite_picture, width: "100", height: "100" %>
+<% @twite.twite_pictures.each do |picture| %>
+  <%= image_tag picture, width: "100", height: "100" %>
+<% end %>
 
 <p>
   <strong>User:</strong>
