@@ -8,13 +8,17 @@
   <%= @twite.user_id %>
 </p>
 
-<%= link_to 'Edit', edit_twite_path(@twite) %> |
+<% if current_user.id == @twite.user_id %>
+  <%= link_to 'Edit', edit_twite_path(@twite) %> |
+<% end %>
 <%= link_to 'Back', twites_path %>
 
 <h2>Filthy Comments Section</h2>
 <% @twite.comments.each do |comment| %>
   <p><%= comment.body %></p>
-  <%= link_to "Delete", "/twites/#{@twite.id}/comments/#{comment.id}", method: :delete  %>
+  <% if current_user.id == comment.user_id || current_user.id == @twite.user_id %>
+    <%= link_to "Delete", "/twites/#{@twite.id}/comments/#{comment.id}", method: :delete  %>
+  <% end %>
 <% end %>
 
 
